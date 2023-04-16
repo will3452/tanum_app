@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:tanun_projet_space/pages/Faq.dart';
+import 'package:tanun_projet_space/pages/Garden.dart';
+import 'package:tanun_projet_space/pages/HeathBenefit.dart';
+import 'package:tanun_projet_space/pages/PlantingMethod.dart';
+import 'package:tanun_projet_space/pages/Soil.dart';
 import 'package:tanun_projet_space/utils/greetings.dart';
 import 'package:tanun_projet_space/utils/storage.dart';
 
@@ -11,11 +17,11 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   final List<Map<String, dynamic>> _menus = [
-    {"label": "Plants", "image": "plant.png"},
-    {"label": "Soil", "image": "soil.png"},
-    {"label": "Planting Method", "image": "planting.png"},
-    {"label": "Health Benefits", "image": "health.png"},
-    {"label": "FAQ", "image": "faq.png"}
+    {"label": "Plants", "image": "plant.png", "page": Garden()},
+    {"label": "Soil", "image": "soil.png", "page": Soil()},
+    {"label": "Planting Method", "image": "planting.png", "page": PlantingMethod()},
+    {"label": "Health Benefits", "image": "health.png", "page": HealthBenefit()},
+    {"label": "FAQ", "image": "faq.png", "page": Faq()}
   ];
   @override
   Widget build(BuildContext context) {
@@ -75,7 +81,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                       onTap: () {
-                        print(_menus[index]['label']);
+                        Get.to(_menus[index]['page']);
                       },
                     ),
                   ],

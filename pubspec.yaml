@@ -71,7 +71,6 @@ flutter:
      - assets/images/health.png
      - assets/images/planting.png
      - assets/images/soil.png
-     -
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

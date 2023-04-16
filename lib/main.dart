@@ -21,16 +21,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
 
-
   @override
   Widget build(BuildContext context) {
 
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tanum',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const Login(),
+      home: box.read('isLogin') != null && box.read('isLogin') ? Home(): Login(),
       debugShowCheckedModeBanner: false,
     );
   }
