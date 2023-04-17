@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                           ),
-                          child: const Text(
+                          child: _isLoading ? const CircularProgressIndicator() : const Text(
                             'Continue',
                             style: TextStyle(
                               fontSize: 20,

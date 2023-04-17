@@ -1,5 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tanun_projet_space/components/BlurredImageCard.dart';
+import 'package:tanun_projet_space/components/MenuIcon.dart';
+import 'package:tanun_projet_space/components/MenuTitle.dart';
 import 'package:tanun_projet_space/pages/Faq.dart';
 import 'package:tanun_projet_space/pages/Garden.dart';
 import 'package:tanun_projet_space/pages/HeathBenefit.dart';
@@ -19,8 +24,16 @@ class _DashboardState extends State<Dashboard> {
   final List<Map<String, dynamic>> _menus = [
     {"label": "Plants", "image": "plant.png", "page": Garden()},
     {"label": "Soil", "image": "soil.png", "page": Soil()},
-    {"label": "Planting Method", "image": "planting.png", "page": PlantingMethod()},
-    {"label": "Health Benefits", "image": "health.png", "page": HealthBenefit()},
+    {
+      "label": "Planting Method",
+      "image": "planting.png",
+      "page": PlantingMethod()
+    },
+    {
+      "label": "Health Benefits",
+      "image": "health.png",
+      "page": HealthBenefit()
+    },
     {"label": "FAQ", "image": "faq.png", "page": Faq()}
   ];
   @override
@@ -28,20 +41,25 @@ class _DashboardState extends State<Dashboard> {
     return Container(
       width: double.infinity,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 40,
-          ),
-          Text(
-            greetings(box.read('userName')),
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),
+            height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              greetings(box.read('userName')),
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(10),
             child: Text(
               getRandomPlantingQuote(),
               textAlign: TextAlign.center,
@@ -50,50 +68,56 @@ class _DashboardState extends State<Dashboard> {
           ),
           // menu list
 
-          const Text('Features', style: TextStyle(
-            fontSize: 20,
-          ),),
+          const MenuTitle(title: "Features"),
           const SizedBox(
             height: 10,
           ),
-          Container(
-            height: 100,
+          SizedBox(
+            height: 75,
             child: ListView.builder(
               itemCount: _menus.length,
               itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    GestureDetector(
-                      child: Container(
-                        width: 75,
-                        height: 75,
-                        margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        decoration: const BoxDecoration(
-                            color: Color(0xFF8fff98),
-                            // color: Colors.green,
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Center(
-                          child: Image.asset(
-                            'assets/images/${_menus[index]['image']}',
-                            height: 50,
-                            width: 50,
-                          ),
-                        ),
-                      ),
-                      onTap: () {
-                        Get.to(_menus[index]['page']);
-                      },
-                    ),
-                  ],
+                return MenuIcon(
+                  imagePath: 'assets/images/${_menus[index]['image']}',
+                  onTap: () {
+                    Get.to(_menus[index]['page']);
+                  },
                 );
               },
               scrollDirection: Axis.horizontal,
             ),
           ),
-
-          Text('Cultivating tips', style: TextStyle(
-            fontSize: 20,
-          ),),
+          const SizedBox(height: 15,),
+          const MenuTitle(title: "Cultivating tips"), 
+          const SizedBox(height: 10),
+          SizedBox(
+            height: 120,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                BlurredImageCard(
+                    imagePath: 'assets/images/bg.jpg',
+                    title: 'PROPER WATERING',
+                    onPressed: () {
+                      print('pressed!');
+                    }),
+                BlurredImageCard(
+                    imagePath: 'assets/images/bg.jpg',
+                    title: 'PROPER SUNLIGHT',
+                    onPressed: () {
+                      print('pressed!');
+                    }),
+                BlurredImageCard(
+                    imagePath: 'assets/images/bg.jpg',
+                    title: 'DEMO',
+                    onPressed: () {
+                      print('pressed!');
+                    }),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10,),
+          const MenuTitle(title: "Suggested plants"),
         ],
       ),
     );

@@ -4,20 +4,21 @@ import 'dart:math';
 
 String greetings (user) {
 
-  DateTime now = DateTime.now().toUtc();
+  DateTime now = DateTime.now();
   TimeOfDay time = TimeOfDay.fromDateTime(now);
 
 
 
-  String result = 'Good evening, ${user}!';
+  String result = 'Good evening';
 
-  if (time.hour >= 5 && time.hour < 12) {
-    result = 'Good morning, ${user}!';
-  } else if (time.hour >= 12 && time.hour < 18) {
-    result = 'Good afternoon, ${user}!';
+  if (time.hour >= 1 && time.hour <= 10) {
+    result = 'Good morning';
+  } else if (time.hour >= 11 && time.hour <= 17) {
+    result = 'Good afternoon';
   }
 
-  return result;
+
+  return "$result, $user";
 }
 
 List<String> plantingQuotes = [

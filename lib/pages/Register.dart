@@ -19,23 +19,31 @@ class _RegisterState extends State<Register> {
 
   Future<void> _register() async {
     try {
-      var response = await dio.post('/api/register',
+      Get.defaultDialog(
+        title: "Please wait",
+        content: CircularProgressIndicator(),
+      );
+      
+      var response = await dio.post(
+        '/api/register',
         data: {"name": _name, "email": _email, "password": _password},
       );
 
       Get.defaultDialog(
-        title:"Success",
+        title: "Success",
         content: const Text("You're now registered! please login"),
         actions: [
-          ElevatedButton(onPressed: () {
-            Get.to(Login());
-          }, child: const Text('Ok'))
+          ElevatedButton(
+              onPressed: () {
+                Get.to(Login());
+              },
+              child: const Text('Ok'))
         ],
       );
     } on DioError catch (e) {
-
       print(e.response!.data);
-      Get.defaultDialog(title:"Error", content: Text(e.response!.data['message']));
+      Get.defaultDialog(
+          title: "Error", content: Text(e.response!.data['message']));
     }
   }
 
