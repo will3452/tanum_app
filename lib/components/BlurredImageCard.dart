@@ -28,11 +28,14 @@ class BlurredImageCard extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: Image.asset(
-                      imagePath,
-                      fit: BoxFit.cover,
-                      height: double.infinity,
-                      width: double.infinity,
+                    child: Hero(
+                      tag: 'https://tanum.projet.space/storage/$imagePath',
+                      child: Image.network(
+                        "https://tanum.projet.space/storage/$imagePath",
+                        fit: BoxFit.cover,
+                        height: double.infinity,
+                        width: double.infinity,
+                      ),
                     ),
                   ),
                   BackdropFilter(
@@ -49,6 +52,7 @@ class BlurredImageCard extends StatelessWidget {
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
+                        fontWeight: FontWeight.w100
                       ),
                     ),
                   ),

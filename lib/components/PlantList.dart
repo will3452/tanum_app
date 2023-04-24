@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tanun_projet_space/components/Loader.dart';
 
 import '../pages/PlantInfo.dart';
 import '../utils/http.dart';
@@ -73,6 +74,7 @@ class _PlantListState extends State<PlantList> {
                     Get.to(PlantInfo(plant: snapshot.data![index]));
                   },
                   child: ListTile(
+                    dense: true,
                     leading: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Hero(
@@ -122,7 +124,7 @@ class _PlantListState extends State<PlantList> {
               },
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: Loader());
           }
           return const Center(
             child: Text('No data found'),

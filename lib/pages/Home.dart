@@ -2,15 +2,17 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:tanun_projet_space/pages/Calendar.dart';
 import 'package:tanun_projet_space/pages/Collections.dart';
 import 'package:tanun_projet_space/pages/Dashboard.dart';
 import 'package:tanun_projet_space/pages/Login.dart';
 import 'package:tanun_projet_space/utils/http.dart';
 import 'package:tanun_projet_space/utils/storage.dart';
 
+import 'Calendar.dart';
+
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final int currentMenu;
+  const Home({Key? key, this.currentMenu = 1}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -21,14 +23,22 @@ class _HomeState extends State<Home> {
   bool _isLoading = false;
 
   List<Widget> _menus = [
-    Calendar(),
+    CalendarPage(),
     Dashboard(),
     Collections(),
   ];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _currentMenu = widget.currentMenu;
+  }
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
+        backgroundColor: Color(0xFFf1f2f3),
         appBar: AppBar(
           leading: const Icon(
             Icons.menu,
@@ -51,7 +61,7 @@ class _HomeState extends State<Home> {
                             dio.options.headers['Authorization'] =
                                 'Bearer ${box.read('userToken')}';
                             var response = await dio.post('/api/logout');
-                            box.erase();
+                            await box.erase();
                             Get.to(const Login());
                           },
                           child: const Text(
@@ -83,23 +93,24 @@ class _HomeState extends State<Home> {
               _currentMenu = index;
             });
           },
-          backgroundColor: Colors.white,
-          color: Colors.green,
+          backgroundColor: Colors.transparent,
+          color: Color(0xFF8fff98),
+          height: 55,
           items: const <Widget>[
             Icon(
               Icons.calendar_month,
-              size: 40,
-              color: Colors.white,
+              size: 32,
+              color: Colors.green,
             ),
             Icon(
               Icons.home,
-              size: 40,
-              color: Colors.white,
+              size: 32,
+              color: Colors.green,
             ),
             Icon(
               Icons.folder,
-              size: 40,
-              color: Colors.white,
+              size: 32,
+              color: Colors.green,
             ),
           ],
         ),

@@ -17,7 +17,7 @@ class MenuIcon extends StatelessWidget {
             color: Color(0xFF8fff98),
             // color: Colors.green,
             borderRadius:
-            BorderRadius.all(Radius.circular(10))),
+            BorderRadius.all(Radius.circular(50))),
         child: Center(
           child: Image.asset(
             // 'assets/images/${_menus[index]['image']}',

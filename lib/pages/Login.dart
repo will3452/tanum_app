@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tanun_projet_space/pages/Home.dart';
 import 'package:tanun_projet_space/pages/Register.dart';
+import 'package:tanun_projet_space/pages/Tutorial.dart';
 import '../utils/http.dart';
 import '../utils/storage.dart';
 
@@ -49,7 +50,6 @@ class _LoginState extends State<Login> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,6 +72,18 @@ class _LoginState extends State<Login> {
                 'Sign with your email and password',
                 style: TextStyle(
                   color: Colors.grey,
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {
+                  Get.to(Tutorial());
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.lightbulb, color: Colors.green,),
+                    Text('Learn more', style: TextStyle(color: Colors.green),),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -142,22 +154,26 @@ class _LoginState extends State<Login> {
                         width: double.infinity,
                         height: 60,
                         child: ElevatedButton(
-                          onPressed: _isLoading ? null: () {
-                            if (_formKey.currentState!.validate()) {
-                              _login();
-                            }
-                          },
+                          onPressed: _isLoading
+                              ? null
+                              : () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _login();
+                                  }
+                                },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                           ),
-                          child: _isLoading ? const CircularProgressIndicator() : const Text(
-                            'Continue',
-                            style: TextStyle(
-                              fontSize: 20,
-                            ),
-                          ),
+                          child: _isLoading
+                              ? const CircularProgressIndicator()
+                              : const Text(
+                                  'Continue',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
                         ),
                       ),
                       const SizedBox(
@@ -171,7 +187,10 @@ class _LoginState extends State<Login> {
                             onTap: () {
                               Get.to(Register());
                             },
-                            child: const Text(' Sign up', style: TextStyle(color: Colors.green),),
+                            child: const Text(
+                              ' Sign up',
+                              style: TextStyle(color: Colors.green),
+                            ),
                           )
                         ],
                       )

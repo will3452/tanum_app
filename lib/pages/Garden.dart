@@ -57,6 +57,7 @@ class _GardenState extends State<Garden> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: Color(0xFFf1f2f3),
         appBar: AppBar(
           bottom: const TabBar(tabs: [
             Tab(

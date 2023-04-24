@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import './storage.dart';
 
 
 final dio = Dio(
   BaseOptions(
     baseUrl: 'https://tanum.projet.space',
-    connectTimeout: const Duration(seconds: 5),
+    // baseUrl: 'http://10.111.6.138:8000',
+    connectTimeout: const Duration(seconds: 60),
   )
 );
