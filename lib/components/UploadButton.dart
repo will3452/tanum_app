@@ -15,7 +15,7 @@ class UploadButton extends StatelessWidget {
         child: Container(
           color: Colors.black12,
           padding: EdgeInsets.all(15),
-          height: 70,
+          height: 75,
           child: Column(
             children: [
               Row(

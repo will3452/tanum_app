@@ -65,7 +65,6 @@ class _DashboardState extends State<Dashboard> {
       "page": const HealthBenefit()
     },
     {"label": "Diary", "image": "diary.png", "page": const Diary()},
-    {"label": "FAQ", "image": "faq.png", "page": const Faq()},
   ];
   @override
   Widget build(BuildContext context) {

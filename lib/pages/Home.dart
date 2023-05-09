@@ -40,8 +40,9 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: Color(0xFFf1f2f3),
         appBar: AppBar(
-          leading: const Icon(
-            Icons.menu,
+          leading: IconButton(icon: Icon(Icons.notifications), onPressed: () {
+
+          },
           ),
           title: const Text('Tanum'),
           actions: [

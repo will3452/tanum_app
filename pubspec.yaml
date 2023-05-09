@@ -43,6 +43,7 @@ dependencies:
   table_calendar: ^3.0.9
   awesome_notifications: ^0.6.19
   file_picker: ^5.2.10
+  workmanager: ^0.5.1
 
 dev_dependencies:
   flutter_test:
