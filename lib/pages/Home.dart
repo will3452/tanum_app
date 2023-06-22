@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: Color(0xFFf1f2f3),
         appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.notifications), onPressed: () {
+          leading: IconButton(icon: Icon(Icons.spa), onPressed: () {
 
           },
           ),

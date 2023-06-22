@@ -12,7 +12,6 @@ class Tips extends StatelessWidget {
       ),
       body: SizedBox(
         width: double.infinity,
-        height: 400,
         child: ListView(children: [
           Article(
             textContent: tip['content'],
@@ -20,6 +19,7 @@ class Tips extends StatelessWidget {
             isNeworkImage: true,
           ),
         ]),
+        height: MediaQuery.of(context).size.height,
       ),
     );
   }

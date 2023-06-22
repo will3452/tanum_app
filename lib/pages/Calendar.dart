@@ -62,7 +62,7 @@ class _CalendarPageState extends State<CalendarPage> {
     return Container(
         padding: const EdgeInsets.all(20),
         height: MediaQuery.of(context).size.height,
-        color: Color(0xFFf1f2f3),
+        color: const Color(0xFFf1f2f3),
         child: Column(
           children: [
             Row(

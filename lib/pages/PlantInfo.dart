@@ -63,6 +63,10 @@ class PlantInfo extends StatelessWidget {
             subtitle: Text('${plant['scientific_name']}'),
           ),
           ListTile(
+            title: const Text("Planting methods"),
+            subtitle: Text('${plant['planting_methods']}'),
+          ),
+          ListTile(
             title: const Text("Habitat"),
             subtitle: Text('${plant['habitat']}'),
           ),
